@@ -1,4 +1,5 @@
 
+
 # Learning Agency Lab - Automated Essay Scoring 2.0 
 In this project,I used to develop and evaluate models for automated essay scoring: Quadratic Weighted Kappa (QWK) Calculation. This technique enhanced the model's accuracy and reliability, making the automated scoring system more effective.
 
@@ -24,3 +25,35 @@ Vanderbilt University and the Learning Agency Lab would like to thank the Bill &
 [(https://www.kaggle.com/competitions/learning-agency-lab-automated-essay-scoring-2)]
 
 
+## Description of the Project
+
+
+**Introduction:**
+Hello! Today, we're diving into a script that demonstrates the development of an automated essay scoring system using machine learning techniques. Let's walk through the key steps and insights gained from the process.
+
+**1. Data Loading and Preparation:**
+The script begins by loading essential datasets: the training data containing essays (`full_text`) and their corresponding scores (`score`), alongside the test data which lacks the scores. This is critical as it sets the foundation for training and evaluating our model.
+
+**2. Data Integrity Check:**
+We ensure data integrity by checking for missing values in the training data. It's important to start with clean, complete datasets to avoid biases or errors in our analysis.
+
+**3. Splitting the Data:**
+To assess the model's performance accurately, we split the training data into training and validation sets using `train_test_split()`. This approach allows us to train the model on one subset and validate it on another, ensuring that our model generalizes well to unseen data.
+
+**4. Feature Extraction with TF-IDF:**
+Textual data (`full_text`) is converted into numerical features using `TfidfVectorizer`. This step transforms essays into a matrix of TF-IDF (Term Frequency-Inverse Document Frequency) features, which captures the importance of words within each essay relative to the entire dataset.
+
+**5. Model Training - Ridge Regression:**
+We employ a Ridge Regression model (`Ridge`) from the `sklearn` library. Ridge Regression is chosen for its ability to handle multicollinearity in data and prevent overfitting by adding a penalty to the magnitude of coefficients. This regularization technique enhances the model's stability and performance.
+
+**6. Evaluation Metric - Quadratic Weighted Kappa (QWK):**
+To evaluate the model's accuracy in predicting essay scores, we use the Quadratic Weighted Kappa (QWK) score. This metric measures the agreement between predicted and actual scores, providing a robust assessment of our model's performance in handling the complexity of essay grading.
+
+**7. Model Evaluation and Prediction:**
+After training the model on the training set, we predict essay scores on the validation set (`val_data`). These predictions are then evaluated using the QWK score function (`quadratic_weighted_kappa()`), ensuring that our model aligns closely with human-assigned scores.
+
+**8. Generating Predictions for Submission:**
+With validated model performance, we proceed to predict essay scores for the test dataset (`test_df`). These predictions are rounded to integers and formatted into a submission file (`submission.csv`), which adheres to the competition or project requirements.
+
+**Conclusion:**
+In conclusion, this script exemplifies a systematic approach to automated essay scoring using machine learning. By leveraging techniques like Ridge Regression and evaluating with QWK, we create a robust model capable of efficiently and accurately assessing essays based on textual content. Such systems not only alleviate the workload of educators but also provide timely and consistent feedback to students, enhancing the learning experience across diverse educational settings.
